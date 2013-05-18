@@ -1,6 +1,6 @@
-BitLuck
+FrankoLuck
 =======
-A simple Bitcoin-based lottery script.
+A simple Franko-based lottery script.
 
 Installation
 ------------
