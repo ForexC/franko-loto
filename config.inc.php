@@ -31,8 +31,8 @@ $owner_fee = .01;
 /* Time cron is set to run give_prize.php, (format suggested: 8:30pm UTC-5) */
 $draw_time = "8:30pm UTC-5";
 
-/* Ticket cost, in BTC */
-$ticket_cost = 1;
+/* Ticket cost, in FRK */
+$ticket_cost = 0.01;
 
 /* Set error reporting level */
 if($debug) error_reporting(E_ERROR);

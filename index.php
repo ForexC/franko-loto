@@ -17,7 +17,7 @@ $template->set_custom_template('templates', 'default');
 
 /* Find the pot size to entice viewers */
 try {
-    $pot_size = number_format($bc->getbalance("Lottery Pot"), 2) . " BTC";
+    $pot_size = number_format($bc->getbalance("Lottery Pot"), 2) . " FRK";
 } catch(Exception $e) {
     if($debug) echo "EXCEPTION: " . $e->getMessage();
     else die("Sorry, an error occured and we cannot continue processing this page.");
@@ -144,16 +144,16 @@ else
                 $stmt->close();
                 
                 try {
-                    $btc = $bc->getreceivedbyaddress($receiving_address);
+                    $FRK = $bc->getreceivedbyaddress($receiving_address);
                 } catch(Exception $e) {
                     if($debug) echo "EXCEPTION: " . $e->getMessage();
                     else die("Sorry, an error occured and we cannot continue processing this page.");
                 }
                 
-                if($btc >= $ticket_cost)
+                if($FRK >= $ticket_cost)
                 {
                     /* Round the entries down, update db */
-                    $entries = floor($btc / $ticket_cost);
+                    $entries = floor($FRK / $ticket_cost);
 
                     /* Create a query based on entries */
                     $query = "INSERT INTO `entries` (`winning_address`) VALUES";
@@ -170,7 +170,7 @@ else
                     {
                         /* Move the coins out of their account */
                         try {
-                            $bc->move("Incoming from " . $winning_address, "Lottery Pot", $btc);
+                            $bc->move("Incoming from " . $winning_address, "Lottery Pot", $FRK);
                         } catch(Exception $e) {
                             if($debug) echo "EXCEPTION: " . $e->getMessage();
                             else die("Sorry, an error occured and we cannot continue processing this page.");
